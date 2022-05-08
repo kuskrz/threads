@@ -28,10 +28,12 @@ public class KnumbersService {
 		return cq;
 	}
 	
-	public int selectNumber(int id) {
-		Root<Knumbers> number = cq.from(Knumbers.class);
-		Predicate pr = cb().equal(number.get("number"), id);
-		cq().where(pr);
-		return em.createQuery(cq()).getFirstResult();
+	public int selectNumber(Integer id) {
+		cb = em.getCriteriaBuilder();
+		cq = cb.createQuery(Knumbers.class);
+		Root<Knumbers> root = cq.from(Knumbers.class);
+		Predicate pr = cb.equal(root.get("number"), id);
+		cq.where(pr);
+		return em.createQuery(cq).getFirstResult();
 	}
 }

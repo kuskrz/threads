@@ -1,5 +1,6 @@
 package kus.krzysztof.threads.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -8,9 +9,18 @@ import javax.validation.constraints.NotNull;
 public class Knumbers {
 	@NotNull
 	@Id
-	private int ind;
+	private Integer ind;
 	
-	private int number;
+	@Column
+	private Integer number;
+	
+	public int getInd() {
+		return ind;
+	}
+
+	public void setInd(int ind) {
+		this.ind = ind;
+	}
 
 	public int getNumber() {
 		return number;
